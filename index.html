@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Link Style Bootstrap Css -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
+    <title>Js tests</title>
+</head>
+
+<body>
+    <!-- Shop -->
+    <main class="container my-3 mb-2 text-center">
+        <h1 class="display-1 mb-4 text-decoration-underline fw-bold">Fruit market</h1>
+        <h2 class="display-5 my-3">Shop</h2>
+        <div class="row">
+            <article class="col-sm-4 mb-2">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Cherry 🍒</h5>
+                        <button class="btn btn-outline-dark" data-fruit="Cherry">Add to cart</button>
+                    </div>
+                </div>
+            </article>
+            <article class="col-sm-4 mb-2">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Banana 🍌</h5>
+                        <button class="btn btn-outline-dark" data-fruit="Banana">Add to cart</button>
+                    </div>
+                </div>
+            </article>
+            <article class="col-sm-4 mb-2">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Apple 🍏</h5>
+                        <button class="btn btn-outline-dark" data-fruit="Apple">Add to cart</button>
+                    </div>
+                </div>
+            </article>
+        </div>
+    </main>
+    <!-- Cart -->
+    <section class="container mt-3 text-center">
+        <h2 class="display-5 my-3">Cart</h2>
+        <ul class="list-group" id="cart">
+            <!-- <li class="list-group-item d-flex justify-content-between align-items-center">
+                <span class="lead">Fruit</span>
+                <span class="badge bg-primary rounded-pill">Quantity</span>
+            </li> -->
+        </ul>
+    </section>
+    <!-- Template -->
+    <template id="template">
+    <li class="list-group-item d-flex justify-content-between align-items-center">
+        <span class="lead">Fruit</span>
+        <span class="badge bg-primary rounded-pill">Quantity</span>
+    </li>
+    </template>
+    <!-- Script Js app -->
+    <script src="js/app.js"></script>
+    <!-- Script Bootstrap Js -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa"
+        crossorigin="anonymous"></script>
+
+</body>
+
+</html>
