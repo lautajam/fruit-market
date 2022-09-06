@@ -2,25 +2,42 @@
 const cart = document.querySelector("#cart");
 const templateList = document.querySelector("#templateList");
 const bill = document.querySelector("#bill");
-const templateBill = document.querySelector("#templateBill");  
+const templateBill = document.querySelector("#templateBill");
+const shopping = document.querySelector("#shopping");
+const templateShopping = document.querySelector("#templateShopping");
+
+const toastLiveExample = document.querySelector("#liveToast");
 
 const fragment = document.createDocumentFragment();
 let ArrayCart = [];
 
-document.addEventListener("click", e =>{
+document.addEventListener("click", e => {
+
     if (e.target.matches(".card .btn-outline-dark")) {
         addToCart(e)
     }
 
-    // console.log(e.target.matches(".list-group-item .btn-success"));
-    // console.log(e.target.matches(".list-group-item .btn-danger"));
     if (e.target.matches(".list-group-item .btn-success")) {
         btnIncrease(e);
     }
+
     if (e.target.matches(".list-group-item .btn-danger")) {
         btnDecrease(e);
     }
-})
+
+    if (e.target.matches("#btnBill")) {
+        const toast = new bootstrap.Toast(toastLiveExample)
+        toast.show()
+
+        
+        console.log(ArrayCart);
+        printsShopping();
+
+        cartEmpty();
+        console.log(ArrayCart);
+
+    }
+});
 
 const addToCart = (e) => {
 
@@ -38,9 +55,9 @@ const addToCart = (e) => {
     // console.log(index);
 
     if (index === -1) {
-     ArrayCart.push(product);
+        ArrayCart.push(product);
     } else {
-        ArrayCart[index].quantity ++;
+        ArrayCart[index].quantity++;
         // ArrayCart[index].price = ArrayCart[index].quantity * product.price;
     }
     console.log(ArrayCart)
@@ -64,11 +81,64 @@ const printCart = () => {
     });
 
     cart.appendChild(fragment);
+
+    printBill();
+}
+
+const printBill = () => {
+    // console.log("print fruit");
+
+    bill.textContent = "";
+
+    const total = ArrayCart.reduce(
+        (acc, current) => acc + current.quantity * current.price, 0
+    )
+    console.log(total);
+
+    const clone = templateBill.content.cloneNode(true);
+    clone.querySelector("span").textContent = total;
+    fragment.appendChild(clone);
+    bill.appendChild(fragment);
+
+    if (total === 0) {
+        bill.textContent = "";
+    }
+}
+
+// NO TERMINADA
+const printsShopping = () => {
+
+    shopping.textContent = "";
+
+    console.log("Hola shoppeo")
+
+    // ArrayCart.forEach(item => {
+    //     const clone = templateShopping.content.cloneNode(true);
+
+    //     fragment.appendChild(clone);
+
+    // });
+
+    // shopping.appendChild(fragment);
+
+}
+// NO TERMINADA
+
+const cartEmpty = () => {
+    bill.textContent = "";
+    cart.textContent = "";
+    ArrayCart = [];
+
+    const p = document.createElement("p");
+    p.className = "text-center h3";
+    p.textContent = "- Empty -";
+    fragment.appendChild(p);
+    cart.appendChild(fragment);
 }
 
 const btnIncrease = e => {
-    console.log("me diste click ", e.target.dataset.id)
-    ArrayCart = ArrayCart.map(item =>{
+    // console.log("me diste click ", e.target.dataset.id)
+    ArrayCart = ArrayCart.map(item => {
         if (item.id === e.target.dataset.id) {
             item.quantity++;
         }
@@ -78,15 +148,17 @@ const btnIncrease = e => {
 };
 
 const btnDecrease = e => {
-    console.log("me diste click ", e.target.dataset.id)
-    ArrayCart = ArrayCart.filter(item =>{
+    // console.log("me diste click ", e.target.dataset.id)
+    ArrayCart = ArrayCart.filter(item => {
         if (item.id === e.target.dataset.id) {
             if (item.quantity > 0) {
                 item.quantity--;
-                if (item.quantity === 0) return;
+                if (item.quantity === 0) {
+                    return;
+                }
                 return item;
             }
-        } else { return item}
+        } else { return item }
     })
     printCart();
 };
