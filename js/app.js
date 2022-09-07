@@ -4,7 +4,7 @@ const templateList = document.querySelector("#templateList");
 const bill = document.querySelector("#bill");
 const templateBill = document.querySelector("#templateBill");
 const shopping = document.querySelector("#shopping");
-const templateShopping = document.querySelector("#templateShopping");
+const templateShopping = document.querySelector("#templateShowShopping");
 
 const toastLiveExample = document.querySelector("#liveToast");
 
@@ -28,10 +28,9 @@ document.addEventListener("click", e => {
     if (e.target.matches("#btnBill")) {
         const toast = new bootstrap.Toast(toastLiveExample)
         toast.show()
-
         
         console.log(ArrayCart);
-        printsShopping();
+        printShopping();
 
         cartEmpty();
         console.log(ArrayCart);
@@ -106,20 +105,25 @@ const printBill = () => {
 }
 
 // NO TERMINADA
-const printsShopping = () => {
+const printShopping = () => {
 
     shopping.textContent = "";
 
     console.log("Hola shoppeo")
 
-    // ArrayCart.forEach(item => {
-    //     const clone = templateShopping.content.cloneNode(true);
+    ArrayCart.forEach(item => {
+        console.log(templateShopping);
+        const clone = templateShopping.content.cloneNode(true);
+        clone.querySelector(".lead").textContent = item.title;
+        clone.querySelector(".small").textContent = item.quantity;
+        clone.querySelector(".text-decoration-underline").textContent = "(" + item.price + ")";
+        clone.querySelector(".fw-bold").textContent = item.price * item.quantity;
 
-    //     fragment.appendChild(clone);
+        fragment.appendChild(clone);    
 
-    // });
+    });
 
-    // shopping.appendChild(fragment);
+    shopping.appendChild(fragment);
 
 }
 // NO TERMINADA

@@ -1,0 +1,20 @@
+Hay que hacer que muestre en el toast las cosas que compraste, cuantas fueron, cuanto sale, el precio x cantidad de unidades de una misma cosa y el total de lo que compraste y cuanto salió:
+
+---------------------------------
+Your fruit shopping;
+
+NombreProd1 cantidad (precio) precio * cantidad
+
+NombreProd2 cantidad (precio) precio * cantidad
+
+NombrePrdo3 cantidad (precio) precio * cantidad
+
+...
+
+NombreProdN cantidad (precio) precio * cantidad
+___________________________________
+
+Total: CantidadTotal PrecioTotal
+----------------------------------
+
+Todo esto con la función printsShopping ()
